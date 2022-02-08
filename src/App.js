@@ -6,8 +6,11 @@ import store from './store/store'
 function App() {
   return (
     <Provider store={store}>
-      <Header />
-      <Main />
+      <div className="bg-slate-800 overflow-x-hidden">
+        <Header />
+        <Main />
+      </div>
+      
     </Provider>
   );
 }

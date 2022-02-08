@@ -6,7 +6,8 @@ function ColorGrid() {
     const colors = useSelector(state => state.colors.randomized[indexShowing])
 
     return (
-        <div className="p-5 flex justify-center flex-wrap w-screen gap-3">
+        <div className="py-5 flex justify-center flex-wrap
+         w-screen gap-3  mx-auto">
             {colors.map(color => <ColorBox key={color} color={color} />)}
         </div>
     )

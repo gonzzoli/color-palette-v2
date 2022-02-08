@@ -6,7 +6,8 @@ import Buttons from './Buttons/Buttons'
 function Main() {
     return (
         <main className="mt-5">
-            <div className="flex justify-between px-5 min-h-[150px]">
+            <div className="flex justify-between px-5 
+             h-40">
                 <SelectedColors />
                 <Buttons />
                 <ColorLists />

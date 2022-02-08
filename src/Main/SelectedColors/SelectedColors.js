@@ -14,13 +14,20 @@ function SelectedColors() {
         })
     }
     return (
-        <div className="w-1/5 z-10 rounded-md bg-slate-200 p-2">
-            <div className="mb-2 border-b border-b-gray-700 flex justify-between items-center">
+        <div className="w-1/5 z-10 rounded-md bg-slate-200 p-2
+        h-min">
+            <div className="mb-2 border-b select-none border-b-gray-700 flex justify-between items-center">
                 <p>Selected</p>
                 <p onClick={changeColorCode}
-                className="px-2 py-1 mb-1 cursor-pointer bg-slate-300 rounded-md" >RGB</p>
+                className="px-2 py-1 mb-1 cursor-pointer transition-all duration-200
+                bg-slate-700 text-white rounded-md hover:bg-slate-800
+                hover:font-bold" >
+                    {codeShowing==='hex'?'RGB':'HEX'}
+                </p>
             </div>
-            <ul className="max-h-32 overflow-y-auto flex flex-col gap-2">
+            <ul className="h-full scrollbar-thumb-gray-900
+            scrollbar-thin flex pr-4 
+            flex-col gap-2">
                 {selectedColors.length>0? 
                 selectedColors.map(color => <Selected key={color} code={codeShowing} color={color} />) : ''}
             </ul>
