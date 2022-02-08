@@ -1,7 +1,13 @@
+import { Fragment } from "react";
+import Header from "./Header/Header";
+import Main from "./Main/Main";
+
 function App() {
   return (
-    <div>
-    </div>
+    <Fragment>
+      <Header />
+      <Main />
+    </Fragment>
   );
 }
 
