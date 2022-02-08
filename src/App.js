@@ -1,13 +1,14 @@
-import { Fragment } from "react";
+import { Provider } from "react-redux";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
+import store from './store/store'
 
 function App() {
   return (
-    <Fragment>
+    <Provider store={store}>
       <Header />
       <Main />
-    </Fragment>
+    </Provider>
   );
 }
 

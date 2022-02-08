@@ -1,12 +1,9 @@
 import ColorBox from "./ColorBox/ColorBox"
-import randomColor from "randomcolor"
+import { useSelector } from "react-redux"
 
 function ColorGrid() {
-    const colors = []
-
-    for(let i=0; i<16; i++) {
-        colors.push(randomColor())
-    }
+    const indexShowing = useSelector(state => state.colors.indexShowing)
+    const colors = useSelector(state => state.colors.randomized[indexShowing])
 
     return (
         <div className="p-5 flex justify-center flex-wrap w-screen gap-3">
