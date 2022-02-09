@@ -17,7 +17,7 @@ function CollectionColor(props) {
         ref={elementRef}
         onMouseEnter={()=>{elementRef.current.style.background = props.color}} 
         onMouseLeave={()=>{elementRef.current.style.background = ''}}
-        className="w-full flex gap-2 py-1 px-2 justify-start items-center
+        className="w-full flex gap-2 py-1 px-2 pr-4 md:pr-6 justify-start items-center
          hover:bg-slate-200 group">
             <div id="collections" className="p-1 group-hover:bg-black transition-all duration-200 rounded-md">
                 <div id="collections" style={{background: props.color}}

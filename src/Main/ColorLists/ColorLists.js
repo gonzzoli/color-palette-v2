@@ -3,7 +3,8 @@ import CollectionsList from './CollectionsList/CollectionsList'
 
 function ColorLists() {
     return (
-        <div className="w-1/5 mx-auto rounded-md bg-slate-200">
+        <div className="w-1/5 mx-auto flex flex-col 
+        gap-2 md:w-full">
             <FavoritesList />
             <CollectionsList />
         </div>

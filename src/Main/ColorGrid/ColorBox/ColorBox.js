@@ -31,7 +31,8 @@ function ColorBox(props) {
         onMouseLeave={() => {setShowCollections(false)}}
         style={{background: props.color || 'grey'}}
         className="w-1/5 h-24 cursor-pointer flex justify-center 
-        items-center gap-1 rounded-md group hover:rounded-2xl transition-all duration-400">
+        items-center gap-1 rounded-md group hover:rounded-2xl 
+        transition-all duration-400 md:w-[22%]">
             <FontAwesomeIcon onClick={addToFavorites} 
             className="text-white hover:text-red-500 opacity-0 
             group-hover:opacity-100 text-xl p-1 transition-all duration-200 

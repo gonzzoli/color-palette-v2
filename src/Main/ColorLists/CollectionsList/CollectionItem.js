@@ -19,7 +19,7 @@ function CollectionItem(props) {
         className="cursor-pointer hover:bg-slate-100 
         transition-all first:rounded-t-md duration-200
         flex flex-col">
-            <div onClick={toggleCollection} id="collections" className="p-2 flex justify-between items-center">
+            <div onClick={toggleCollection} id="collections" className="p-2 pr-5 md:pr-8 flex justify-between items-center">
                 <div id="collections" className="flex h-full gap-2" >
                     <CollectionLogo collection={props.collection} />
                     {props.collection}

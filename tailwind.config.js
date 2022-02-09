@@ -9,8 +9,14 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans]
-      }
+      },
     },
+    screens: {
+      xl: {max: '1100px'},
+      lg: {max: '1023px'},
+      md: {max: '950px'},
+      sm: {max: '639px'},
+    }
   },
   plugins: [require('tailwind-scrollbar')],
 }

@@ -28,14 +28,16 @@ function Buttons() {
     }
 
     return (
-        <div className="w-[60%] flex gap-4 justify-center items-center mb-5">
+        <div className="w-[60%] flex gap-4 justify-center 
+        items-center mb-5 md:w-full md:col-start-1 md:col-end-3 md:row-start-2">
             <button onClick={previousColors}  
             style={{background: isFirstColorSet? 'grey':'#FDE047', cursor: isFirstColorSet? 'default':'pointer', }}
             className="py-2 px-4 rounded-md transition-all 
             flex gap-2 items-center min-w-[180px] 
-            justify-center hover:gap-4 ease-out">
+            justify-center hover:gap-4 ease-out 
+            md:min-w-0 md:p-4 md:px-8 md:hover:scale-90">
             <FontAwesomeIcon icon={faChevronLeft} className="text-sm" />
-                Previous Colors
+                <p className="md:hidden">Previous Colors</p>
             </button>
             <button onClick={randomizeColors} 
             className="py-3 px-5 rounded-md font-bold 
@@ -46,8 +48,10 @@ function Buttons() {
             style={{background: isLastColorSet? 'grey':'#FDE047', 
             cursor: isLastColorSet? 'default':'pointer'}}
             className="py-2 px-4 rounded-md transition-all flex gap-2 
-            items-center justify-center min-w-[170px] hover:gap-4 ease-out">
-                Next Colors
+            items-center justify-center min-w-[170px]
+            md:min-w-0 md:py-4 md:px-8 md:hover:scale-90
+            hover:gap-4 ease-out">
+                <p className="md:hidden">Next Colors</p>
                 <FontAwesomeIcon icon={faChevronRight} className="text-sm" />
             </button>
         </div>

@@ -16,7 +16,7 @@ function Favorite(props) {
         <li ref={elementRef} id="favorites"
         onMouseEnter={()=>{elementRef.current.style.background = props.color}} 
         onMouseLeave={()=>{elementRef.current.style.background = ''}} className="w-full flex gap-2 justify-start
-         items-center group first:rounded-t-md last:rounded-b-md p-2 transition-all duration-200">
+         items-center group first:rounded-t-md last:rounded-b-md p-2 pr-4 transition-all duration-200">
             <div id="favorites" className="p-1 group-hover:bg-black transition-all duration-200 rounded-md">
                 <div id="favorites" style={{background: props.color}}
             className="w-7 h-7 rounded-md cursor-pointer"></div>

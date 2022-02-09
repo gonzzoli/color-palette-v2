@@ -42,7 +42,7 @@ function Selected(props) {
     }
 
     return (
-        <li className="w-full flex gap-2 justify-start items-center">
+        <li className="w-full flex gap-2 justify-start md:pr-2 items-center">
             <div style={{background: props.color}}
             className="w-7 h-7 rounded-md cursor-pointer"></div>
             {props.code==='hex'? 
