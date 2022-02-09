@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux"
 import { colorsActions } from "../../../../store/store"
 import CollectionLogo from "../../../ColorLists/CollectionsList/CollectionLogo"
 
-
 function CollectionsDropdown(props) {
     const [isCreatingCollection, setIsCreatingCollection] = useState(false)
     const inputRef = useRef()
     const collections = useSelector(state => state.colors.collections)
     const dispatch = useDispatch()
+
+    const position = props.position
+    const leftDisplacement = window.innerWidth<=400?  -position*90 : -position*64
+    
     let collectionNames = []
 
     for(const key in collections) {
@@ -32,7 +35,10 @@ function CollectionsDropdown(props) {
     }
 
     return (
-    <div className="absolute shadow-md shadow-slate-500 z-10 top-8 bg-white rounded-md">
+    <div
+    style={{left: leftDisplacement+'px'}} 
+    className="absolute shadow-md shadow-slate-500 z-10 
+    top-8 bg-white rounded-md">
         {!isCreatingCollection ?
         <ul>
             <li onClick={showCollectionForm} className="p-2 transition-all duration-200 

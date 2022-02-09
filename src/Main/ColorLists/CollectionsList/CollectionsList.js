@@ -28,8 +28,11 @@ function CollectionsList() {
     }, [isOpen])
 
     return (
-        <div id="collections" className="z-10 py-2 w-full select-none relative bg-slate-200 rounded-md">
-            <div id="collections" onClick={toggleList} className="cursor-pointer px-2 select-none flex justify-between items-center">
+        <div id="collections" className="z-10 w-full 
+        select-none relative bg-slate-200 rounded-md">
+            <div id="collections" onClick={toggleList} 
+            className="cursor-pointer px-2 select-none flex 
+            justify-between items-center py-2">
                 <p id="collections">Collections</p>
                 <FontAwesomeIcon id="collections" style={{transform: isOpen?'rotate(180deg)':''}}
                  className="text-sm transition-all duration-200" icon={faChevronDown} />
@@ -38,7 +41,7 @@ function CollectionsList() {
             <ul id="collections" className="
                 rounded-md flex flex-col min-w-min max-h-64 overflow-auto 
                 bg-slate-300 w-full
-                absolute scrollbar-thumb-gray-900
+                absolute top-11 scrollbar-thumb-gray-900
                 scrollbar-thin">
                 {
                collectionsNames.length > 0 ? 

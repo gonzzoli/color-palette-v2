@@ -2,7 +2,8 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import randomColor from "randomcolor";
 
 const initialColors = []
-for(let i=0; i<16; i++) {
+const x = window.innerWidth<=400 ? 12 : 16
+for(let i=0; i<x; i++) {
     initialColors.unshift(randomColor())
 }
 
@@ -18,7 +19,8 @@ const colorsSlice = createSlice({
     reducers: {
         randomizeColors(state) {
             const colors = []
-            for(let i=0; i<16; i++) {
+            const x = window.innerWidth<=400 ? 12 : 16
+            for(let i=0; i<x; i++) {
                 colors.unshift(randomColor())
             }
             state.randomized.push(colors)

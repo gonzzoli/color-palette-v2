@@ -15,7 +15,8 @@ module.exports = {
       xl: {max: '1100px'},
       lg: {max: '1023px'},
       md: {max: '950px'},
-      sm: {max: '639px'},
+      sm: {max: '550px'},
+      xs: {max: '400px'}
     }
   },
   plugins: [require('tailwind-scrollbar')],

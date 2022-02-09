@@ -6,11 +6,10 @@ import store from './store/store'
 function App() {
   return (
     <Provider store={store}>
-      <div className="bg-slate-800 overflow-x-hidden">
+      <div className="bg-slate-800 overflow-x-hidden h-screen">
         <Header />
         <Main />
       </div>
-      
     </Provider>
   );
 }
