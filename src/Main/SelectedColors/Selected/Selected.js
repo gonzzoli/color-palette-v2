@@ -1,7 +1,9 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons"
+import { faClipboard } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useDispatch } from "react-redux"
 import { colorsActions } from "../../../store/store"
+import { useRef } from "react"
 
 function hexToRgb(hexString) {
     hexString = hexString.slice(1)
@@ -36,18 +38,26 @@ function hexCharToDec(char) {
 
 function Selected(props) {
     const dispatch = useDispatch()
+    const codeRef = useRef()
 
     function removeColor() {
         dispatch(colorsActions.removeSelectedColor(props.color))
     }
 
+    function copyToClipboard() {
+        navigator.clipboard.writeText(codeRef.current.textContent)
+    }
+
     return (
-        <li className="w-full flex gap-2 justify-start md:pr-2 items-center">
+        <li className="group w-full flex gap-2 justify-start md:pr-2 items-center">
             <div style={{background: props.color}}
-            className="w-7 h-7 rounded-md cursor-pointer"></div>
-            {props.code==='hex'? 
-            <p className="uppercase">{props.color}</p>
-            : <p>{hexToRgb(props.color)}</p>}
+            className="w-7 h-7 rounded-md cursor-pointer flex items-center justify-center">
+                <FontAwesomeIcon icon={faClipboard} onClick={copyToClipboard}
+                className="w-5 h-5 opacity-0 group-hover:opacity-100 
+                transition-all duration-200" />
+            </div>
+            <p ref={codeRef} style={{textTransform:props.code==='hex'?'uppercase':''}}>{props.code==='hex' ? props.color
+            : hexToRgb(props.color)}</p>
             <FontAwesomeIcon onClick={removeColor} className="cursor-pointer ml-auto" icon={faTimes} />
         </li>
     )
