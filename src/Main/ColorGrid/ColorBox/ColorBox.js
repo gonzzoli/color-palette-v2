@@ -25,7 +25,6 @@ function ColorBox(props) {
         setShowCollections(prevState => !prevState)
     }
 
-
     return (
         <div onClick={addToSelected}
         id="color-box"

@@ -6,6 +6,24 @@ import { colorsActions } from "../../../store/store"
 import { useRef } from "react"
 
 function hexToRgb(hexString) {
+    function hexCharToDec(char) {
+        switch (char) {
+            case 'a':
+                return 10
+            case 'b':
+                return 11
+            case 'c':
+                return 12
+            case 'd':
+                return 13
+            case 'e':
+                return 14
+            case 'f':
+                return 15
+            default:
+                return Number(char)
+        }
+    }
     hexString = hexString.slice(1)
     let red;
     let green;
@@ -17,24 +35,7 @@ function hexToRgb(hexString) {
     return `rgb(${red}, ${green}, ${blue})`
 }
 
-function hexCharToDec(char) {
-    switch (char) {
-        case 'a':
-            return 10
-        case 'b':
-            return 11
-        case 'c':
-            return 12
-        case 'd':
-            return 13
-        case 'e':
-            return 14
-        case 'f':
-            return 15
-        default:
-            return Number(char)
-    }
-}
+
 
 function Selected(props) {
     const dispatch = useDispatch()
