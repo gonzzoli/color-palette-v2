@@ -117,6 +117,14 @@ function DragBox(props) {
         setShowOptions(prevState => !prevState)
     }
 
+    function deleteNode(){
+        nodeRef.current.style.display = 'none'
+    }
+
+    function changeLayer(layer) {
+        nodeRef.current.style.zIndex = layer
+    }
+
     return (
         <Draggable
         nodeRef={nodeRef} 
@@ -136,7 +144,9 @@ function DragBox(props) {
                 className="relative inline-block text-sm top-1 left-1 cursor-pointer bg-slate-100 
                 py-1 px-2 rounded-md">
                     <FontAwesomeIcon icon={faEllipsisV} />
-                    {showOptions && <DragBoxDropdown />}
+                    {showOptions && <DragBoxDropdown 
+                    onChangeLayer={changeLayer}
+                    onDeleteNode={deleteNode} />}
                 </div>
             </div>
         </Draggable>
