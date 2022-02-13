@@ -82,7 +82,7 @@ function DragTextDropdown(props) {
         <ul 
         style={{width: showingTextForm ? '13rem' : 'auto'}}
         ref={dropdownRef} className="z-50 absolute top-8 select-none
-        rounded-lg overflow-hidden">
+        rounded-lg overflow-hidden min-w-[10rem]">
             <li 
             onClick={deleteNode}
             className={optionsClasses}>Delete</li>

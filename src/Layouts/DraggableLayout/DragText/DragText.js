@@ -71,7 +71,7 @@ function DragText() {
                     onWeightToggle={changeWeight}
                     onDeleteNode={deleteNode} colors={colors} />}
                 </div>
-                <p ref={textRef} className="break-words">Hola text aaahhas</p>
+                <p ref={textRef} className="break-words">New Text</p>
             </div>
         </Draggable>
     )

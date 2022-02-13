@@ -7,7 +7,10 @@ import DragText from './DragText/DragText'
 
 function DraggableLayout(props) {
     const [showingElementsOptions, setShowingElementsOptions] = useState(false)
-    const [elementsList, setElementsList] = useState([])
+    const [elementsList, setElementsList] = useState([
+        <DragBox key={Math.random()} />,
+        <DragText key={Math.random()} />
+    ])
     const containerRef = useRef()
 
     function checkOptionsBlur(e) {

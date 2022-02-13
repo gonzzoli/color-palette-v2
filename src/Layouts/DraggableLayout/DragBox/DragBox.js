@@ -78,7 +78,7 @@ function DragBox() {
             onClick={checkSize}
             style={{background: bgColor}}
             className='w-20 h-20
-            overflow-hidden hover:resize group absolute z-0'>
+            overflow-hidden hover:resize group absolute z-[48]'>
                 <div id='handler'
                 className='w-4 h-4 rounded-full 
                 group-hover:bg-white group-hover:shadow-xl 
