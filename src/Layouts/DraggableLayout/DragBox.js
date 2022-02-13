@@ -98,23 +98,26 @@ function DragBox(props) {
 
     function changeColor(e) {
         if(e.target===nodeRef.current) {
-            console.log(nodeRef.current.style.background)
             nodeRef.current.style.background = getNextColor(nodeRef.current.style.background)
         }
     }
 
-    function changeLayer(layer) {
-        nodeRef.current.style.zIndex = 100
-        console.log(nodeRef.current.style.zIndex)
+    function setColor(color) {
+        nodeRef.current.style.background = color
     }
 
-    function toggleOptions() {
-        if(!showOptions) {
-            nodeRef.current.style.overflow = 'visible'
-        } else {
-            nodeRef.current.style.overflow = 'hidden'
-        }
-        setShowOptions(prevState => !prevState)
+    function changeLayer(layer) {
+        nodeRef.current.style.zIndex = String(layer)
+    }
+
+    function openOptions() {
+        nodeRef.current.style.overflow = 'visible'
+        setShowOptions(true)
+    }
+
+    function closeOptions() {
+        nodeRef.current.style.overflow = 'hidden'
+        setShowOptions(false)
     }
 
     function deleteNode(){
@@ -140,13 +143,17 @@ function DragBox(props) {
                 group-hover:bg-white group-hover:shadow-xl 
                 transition-all absolute right-2 top-2'></div>
                 <div
-                onClick={toggleOptions} 
+                onClick={openOptions} 
                 className="relative inline-block text-sm top-1 left-1 cursor-pointer bg-slate-100 
-                py-1 px-2 rounded-md">
+                py-1 px-2 rounded-md opacity-0 group-hover:opacity-100 transition-all duration-200">
                     <FontAwesomeIcon icon={faEllipsisV} />
                     {showOptions && <DragBoxDropdown 
                     onChangeLayer={changeLayer}
-                    onDeleteNode={deleteNode} />}
+                    onDeleteNode={deleteNode} 
+                    onBlur={closeOptions}
+                    colors={colors}
+                    onSetColor={setColor}
+                    currentLayer={nodeRef.current.style.zIndex} />}
                 </div>
             </div>
         </Draggable>
