@@ -40,7 +40,7 @@ function DraggableLayout(props) {
     }
 
     return (
-        <div className="w-full">
+        <section className="w-full">
             <div className='flex justify-center items-center relative'>
                 <p
                 onClick={toggleElementsOptions}
@@ -72,7 +72,7 @@ function DraggableLayout(props) {
             className="h-screen bg-white mt-5 relative" >
                 {elementsList}
             </div>
-        </div>
+        </section>
     )
 }
 

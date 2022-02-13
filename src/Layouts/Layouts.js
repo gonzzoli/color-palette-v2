@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import DraggableLayout from "./DraggableLayout/DraggableLayout"
+import FixedLayout from "./FixedLayout/FixedLayout"
 
 
 function Layouts() {
@@ -10,10 +11,11 @@ function Layouts() {
                     Try your colors <span className="text-lg">(working on it currently)</span>
                 </h1>
                 <p className="mb-7">Create your layout from scratch here by adding, 
-                dragging and resizing elements, or use some pre-made layouts further down.</p>
+                dragging and resizing elements, or use a pre-made layout further down.</p>
             </div>
             <div>
                 <DraggableLayout />
+                <FixedLayout />
             </div>
         </section>
     )
