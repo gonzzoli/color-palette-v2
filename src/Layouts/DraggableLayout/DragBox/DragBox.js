@@ -141,7 +141,7 @@ function DragBox(props) {
                 <div id='handler'
                 className='w-4 h-4 rounded-full 
                 group-hover:bg-white group-hover:shadow-xl 
-                transition-all absolute right-2 top-2'></div>
+                transition-all absolute right-2 top-2 cursor-grab active:cursor-grabbing'></div>
                 <div
                 onClick={openOptions}
                 className="relative inline-block text-sm top-1 left-1 cursor-pointer bg-slate-100 

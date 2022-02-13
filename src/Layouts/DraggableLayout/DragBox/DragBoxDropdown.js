@@ -11,14 +11,13 @@ function DragBoxDropdown(props) {
         function checkBlur(e) {
             if(dropdownRef.current.contains(e.target)) return
             props.onBlur()
-            console.log('a')
         }
 
         window.addEventListener('click', checkBlur)
         return () => {
             window.removeEventListener('click', checkBlur)
         }
-    })
+    }, [])
 
     function deleteNode(e) {
         e.stopPropagation()
@@ -50,7 +49,7 @@ function DragBoxDropdown(props) {
         <ul ref={dropdownRef} className="absolute cursor-default top-8 rounded-lg overflow-hidden select-none">
             <li 
             onClick={deleteNode}
-            className="w-full py-2 px-1 bg-white 
+            className="w-full py-2 px-1 bg-slate-200 
             whitespace-nowrap hover:bg-slate-300 
             transition-all duration-200 font-bold">
                 Delete
@@ -61,16 +60,16 @@ function DragBoxDropdown(props) {
             className="px-2 py-1 bg-slate-500 w-24" >
                 <label htmlFor="layer" className="block text-white">Layer:</label>
                 <input ref={layerInputRef} name="layer" 
-                className="mt-1 mb-2 w-full" 
+                className="mt-1 mb-2 w-full p-0.5" 
                 type='number' max={99} min={0} defaultValue={props.currentLayer || 0} />
                 <button type="submit" 
-                className="py-1 px-2 bg-slate-300 rounded-md font-bold mb-1">
+                className="py-1 px-2 bg-slate-300 rounded-md text-sm font-bold mb-1">
                     Change</button>
             </form>
             :
             <li 
             onClick={showLayerInput}
-            className="w-full py-2 px-1 bg-white 
+            className="w-full py-2 px-1 bg-slate-200
             whitespace-nowrap hover:bg-slate-300 
             transition-all duration-200 font-bold">
                 Change Layer
@@ -92,7 +91,7 @@ function DragBoxDropdown(props) {
             :
             <li 
             onClick={showColors}
-            className="w-full py-2 px-1 bg-white 
+            className="w-full py-2 px-1 bg-slate-200 
             whitespace-nowrap hover:bg-slate-300 
             transition-all duration-200 font-bold">
                 Colors
