@@ -48,7 +48,7 @@ function DragText(props) {
     return (
         <Draggable handle="#handler" bounds='parent' nodeRef={nodeRef}>
             <div ref={nodeRef}
-            className="hover:resize hover:overflow-hidden p-1 
+            className="z-[49] hover:resize hover:overflow-hidden p-1 
             inline-block border-2 border-black 
             border-opacity-0 hover:border-opacity-100 
             transition-[border-opacity] duration-200 group absolute" >

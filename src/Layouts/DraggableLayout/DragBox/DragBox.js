@@ -128,6 +128,10 @@ function DragBox(props) {
         nodeRef.current.style.zIndex = layer
     }
 
+    function changeRadius(radius) {
+        nodeRef.current.style.borderRadius = radius + 'px'
+    }
+
     return (
         <Draggable
         nodeRef={nodeRef} 
@@ -137,7 +141,7 @@ function DragBox(props) {
             onClick={checkSize}
             style={{background: colors[0]}}
             className='w-20 h-20
-            overflow-hidden hover:resize group absolute'>
+            overflow-hidden hover:resize group absolute z-0'>
                 <div id='handler'
                 className='w-4 h-4 rounded-full 
                 group-hover:bg-white group-hover:shadow-xl 
@@ -153,7 +157,9 @@ function DragBox(props) {
                     onBlur={closeOptions}
                     colors={colors}
                     onSetColor={setColor}
-                    currentLayer={nodeRef.current.style.zIndex} />}
+                    onChangeRadius={changeRadius}
+                    currentLayer={nodeRef.current.style.zIndex}
+                    currentRadius={nodeRef.current.style.borderRadius} />}
                 </div>
             </div>
         </Draggable>
