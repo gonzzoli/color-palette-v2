@@ -9,7 +9,6 @@ function DraggableLayout(props) {
     const [showingElementsOptions, setShowingElementsOptions] = useState(false)
     const [elementsList, setElementsList] = useState([])
     const containerRef = useRef()
-    const colors = props.colors
 
     function checkOptionsBlur(e) {
         if(e.target.id === 'new-element-button') return
@@ -28,12 +27,12 @@ function DraggableLayout(props) {
     }
 
     function insertBox() {
-        setElementsList(elementsList.concat(<DragBox key={Math.random()} colors={colors} />))
+        setElementsList(elementsList.concat(<DragBox key={Math.random()} />))
         setShowingElementsOptions(false)
     }
 
     function insertText() {
-        setElementsList(elementsList.concat(<DragText key={Math.random()} colors={colors} />))
+        setElementsList(elementsList.concat(<DragText key={Math.random()} />))
         setShowingElementsOptions(false)
     }
 

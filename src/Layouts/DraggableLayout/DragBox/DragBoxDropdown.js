@@ -87,7 +87,7 @@ function DragBoxDropdown(props) {
             </li>}
             {showingColors ? 
             <ul className="w-full overflow-x-hidden 
-            overflow-y-scroll h-52 scrollbar-thumb-gray-900
+            overflow-y-scroll max-h-52 scrollbar-thumb-gray-900
             scrollbar-thin">
                 {props.colors.map(color => {
                     return (

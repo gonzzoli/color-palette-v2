@@ -3,7 +3,6 @@ import DraggableLayout from "./DraggableLayout/DraggableLayout"
 
 
 function Layouts() {
-    const colors = useSelector(state => state.colors.selected)
     return (
         <section className="w-full mt-12">
             <div className="text-center text-white">
@@ -14,7 +13,7 @@ function Layouts() {
                 dragging and resizing elements, or use some pre-made layouts further down.</p>
             </div>
             <div>
-                <DraggableLayout colors={colors} />
+                <DraggableLayout />
             </div>
         </section>
     )

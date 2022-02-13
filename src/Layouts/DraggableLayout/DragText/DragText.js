@@ -2,14 +2,16 @@ import { faEllipsisV, faUpDownLeftRight } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useRef, useState } from "react"
 import Draggable from "react-draggable"
+import { useSelector } from "react-redux"
 import DragTextDropdown from "./DragTextDropdown"
 
 
-function DragText(props) {
+function DragText() {
     const nodeRef = useRef()
     const textRef = useRef()
     const [showingTextOptions, setShowingTextOptions] = useState(false)
-    const colors = props.colors
+    const colors = useSelector(state => state.colors.selected)
+
     function openOptions() {
         nodeRef.current.style.overflow = 'visible'
         setShowingTextOptions(true)

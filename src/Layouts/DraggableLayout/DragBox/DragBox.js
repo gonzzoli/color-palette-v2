@@ -1,109 +1,45 @@
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import Draggable from "react-draggable"
+import { useSelector } from "react-redux"
 import DragBoxDropdown from "./DragBoxDropdown"
 
-function rgbToHex(rgbString=''){
-    rgbString = rgbString.match(/\(([^)]+)\)/)[1].split(',')
-    let hexString = ''
-    function rgbNumToHex(num){
-        let string = ''
-        let aux = Math.floor(num/16)
-        let remainder = num%16
-        switch (aux) {
-            case 10:
-                string += 'A'
-                break;
-            case 11:
-                string += 'B'
-                break;
-            case 12:
-                string += 'C'
-                break;
-            case 13:
-                string += 'D'
-                break;
-            case 14:
-                string += 'E'
-                break;
-            case 15:
-                string += 'F'
-                break;
-            default:
-                string += aux
-                break;
-        }
-        switch (remainder) {
-            case 10:
-                string += 'A'
-                break;
-            case 11:
-                string += 'B'
-                break;
-            case 12:
-                string += 'C'
-                break;
-            case 13:
-                string += 'D'
-                break;
-            case 14:
-                string += 'E'
-                break;
-            case 15:
-                string += 'F'
-                break;
-            default:
-                string += remainder
-                break;
-        }
-        return string
-    }
-    rgbString.forEach(value => {
-        hexString += rgbNumToHex(Number(value.trim()))
-    })
-    return '#' + hexString
-}
-
-function DragBox(props) {
+function DragBox() {
     const nodeRef = useRef()
     const [showOptions, setShowOptions] = useState(false)
-    const colors = props.colors
-    let lastSize = {}
-
-    useEffect(() => {
-        lastSize = {
-            x: nodeRef.current.offsetWidth, 
-            y: nodeRef.current.offsetHeight
-        }
-    }, [])
-
-    function getNextColor(current) {
-        const index = colors.indexOf(rgbToHex(current.toLowerCase()).toLowerCase())
-        if(index===colors.length-1) return colors[0]
-        return colors[index+1]
-    }
+    const colors = useSelector(state => state.colors.selected)
+    const [bgColor, setBgColor] = useState(colors[0])
+    const [lastSize, setLastSize] = useState({
+        x: 80, 
+        y: 80
+    })
 
     function checkSize(e) {
-        if(lastSize.x===nodeRef.current.offsetWidth && lastSize.y ===nodeRef.current.offsetHeight) {
+        if(lastSize.x===nodeRef.current.offsetWidth && lastSize.y===nodeRef.current.offsetHeight) {
             changeColor(e)
             return
         }
-        lastSize = {
+        setLastSize({
             x: nodeRef.current.offsetWidth,
             y: nodeRef.current.offsetHeight
-        }
-        
+        })
     }
 
     function changeColor(e) {
+        function getNextColor() {
+            const index = colors.indexOf(bgColor)
+            if(index===colors.length-1) return colors[0]
+            return colors[index+1]
+        }
+
         if(e.target===nodeRef.current) {
-            nodeRef.current.style.background = getNextColor(nodeRef.current.style.background)
+            setBgColor(getNextColor())
         }
     }
 
     function setColor(color) {
-        nodeRef.current.style.background = color
+        setBgColor(color)
     }
 
     function changeLayer(layer) {
@@ -139,7 +75,7 @@ function DragBox(props) {
         handle='#handler'>
             <div ref={nodeRef} 
             onClick={checkSize}
-            style={{background: colors[0]}}
+            style={{background: bgColor}}
             className='w-20 h-20
             overflow-hidden hover:resize group absolute z-0'>
                 <div id='handler'

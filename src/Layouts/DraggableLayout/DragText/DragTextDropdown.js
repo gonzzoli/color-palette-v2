@@ -88,7 +88,7 @@ function DragTextDropdown(props) {
             className={optionsClasses}>Delete</li>
             {showingColors ? 
             <ul className="w-full overflow-x-hidden 
-            overflow-y-scroll h-52 scrollbar-thumb-gray-900
+            overflow-y-scroll max-h-52 scrollbar-thumb-gray-900
             scrollbar-thin">
                 {props.colors.map(color => {
                     return (
@@ -122,7 +122,7 @@ function DragTextDropdown(props) {
             <form onSubmit={changeText}
             className="px-2 py-1 w-full bg-slate-500" >
                 <label className="block text-white">Text: </label>
-                <textarea className="mt-1 mb-2 w-full p-0.5" 
+                <textarea autoFocus className=" mt-1 mb-2 w-full p-0.5" 
                 ref={textInputRef}></textarea>
                 <button className="py-1 px-2 bg-slate-300 
                 rounded-md font-bold text-sm mb-1" 
