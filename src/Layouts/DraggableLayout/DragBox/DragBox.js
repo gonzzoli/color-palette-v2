@@ -14,6 +14,7 @@ function DragBox() {
         x: 80, 
         y: 80
     })
+    const [lastLayer, setLastLayer] = useState(0)
 
     function checkSize(e) {
         if(lastSize.x===nodeRef.current.offsetWidth && lastSize.y===nodeRef.current.offsetHeight) {
@@ -44,24 +45,24 @@ function DragBox() {
 
     function changeLayer(layer) {
         nodeRef.current.style.zIndex = String(layer)
+        console.log(layer)
+        setLastLayer(layer)
     }
 
     function openOptions() {
         nodeRef.current.style.overflow = 'visible'
+        nodeRef.current.style.zIndex = '99'
         setShowOptions(true)
     }
 
     function closeOptions() {
         nodeRef.current.style.overflow = 'hidden'
+        nodeRef.current.style.zIndex = lastLayer
         setShowOptions(false)
     }
 
     function deleteNode(){
         nodeRef.current.style.display = 'none'
-    }
-
-    function changeLayer(layer) {
-        nodeRef.current.style.zIndex = layer
     }
 
     function changeRadius(radius) {
@@ -94,7 +95,7 @@ function DragBox() {
                     colors={colors}
                     onSetColor={setColor}
                     onChangeRadius={changeRadius}
-                    currentLayer={nodeRef.current.style.zIndex}
+                    lastLayer={lastLayer}
                     currentRadius={nodeRef.current.style.borderRadius} />}
                 </div>
             </div>

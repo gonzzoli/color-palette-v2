@@ -74,7 +74,7 @@ function DragBoxDropdown(props) {
                 <label htmlFor="layer" className="block text-white">Layer:</label>
                 <input ref={layerInputRef} name="layer" 
                 className="mt-1 mb-2 w-full p-0.5" 
-                type='number' max={40} min={-40} defaultValue={props.currentLayer || 0} />
+                type='number' max={40} min={-40} defaultValue={props.lastLayer || 0} />
                 <button type="submit" 
                 className="py-1 px-2 bg-slate-300 rounded-md text-sm font-bold mb-1">
                     Change</button>
