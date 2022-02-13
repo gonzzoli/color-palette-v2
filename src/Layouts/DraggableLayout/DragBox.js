@@ -143,7 +143,7 @@ function DragBox(props) {
                 group-hover:bg-white group-hover:shadow-xl 
                 transition-all absolute right-2 top-2'></div>
                 <div
-                onClick={openOptions} 
+                onClick={openOptions}
                 className="relative inline-block text-sm top-1 left-1 cursor-pointer bg-slate-100 
                 py-1 px-2 rounded-md opacity-0 group-hover:opacity-100 transition-all duration-200">
                     <FontAwesomeIcon icon={faEllipsisV} />
