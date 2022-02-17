@@ -1,8 +1,9 @@
+import { faBars } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useRef } from "react"
 import { useSelector } from "react-redux"
 
 function rgbToHex(rgbString=''){
-    console.log(rgbString)
     rgbString = rgbString.match(/\(([^)]+)\)/)[1].split(',')
     let hexString = ''
     function rgbNumToHex(num){
@@ -70,6 +71,7 @@ function FixedLayout() {
 
     function setNextBgColor(e) {
         e.stopPropagation()
+
         const index = colors.indexOf(rgbToHex(e.target.style.background).toLowerCase())
         if(index===colors.length-1) {
             e.target.style.background = colors[0]
@@ -80,12 +82,17 @@ function FixedLayout() {
 
     function setNextTextColor(e) {
         e.stopPropagation()
-        const index = colors.indexOf(rgbToHex(e.target.style.color).toLowerCase())
-        if(index===colors.length-1) {
-            e.target.style.color = colors[0]
-            return
+        try{
+            const index = colors.indexOf(rgbToHex(e.target.style.color).toLowerCase())
+            if(index===colors.length-1) {
+                e.target.style.color = colors[0]
+                return
+            }
+            e.target.style.color = colors[index+1]
+        } catch(e) {
+            console.log('That can`t change it`s color. Sorry!')
         }
-        e.target.style.color = colors[index+1]
+        
     }
 
     function setNextBorderColor(e) {
@@ -118,7 +125,7 @@ function FixedLayout() {
     }
 
     return (
-    <section className="h-screen bg-white select-none">
+    <section className="h-screen mdsm:min-h-screen mdsm:h-auto bg-white select-none">
         <header
         style={{background: randomStartColor()}}
         onClick={setNextBgColor}
@@ -134,7 +141,7 @@ function FixedLayout() {
                 >Store</span>
             </div>
             <nav className="flex justify-end 
-            items-center gap-8">
+            items-center gap-8 mdsm:hidden">
                 <div 
                 style={{background: randomStartColor()}}
                 onClick={setNextBgColor}
@@ -163,20 +170,32 @@ function FixedLayout() {
                     >Cart</p>
                 </div>
             </nav>
+            <div
+            style={{borderColor: randomStartColor()}}
+            onClick={setNextBorderColor}
+            className="md:hidden mdsm:block flex justify-center
+            items-center border-2 border-black py-1 px-2 rounded-md">
+                <FontAwesomeIcon
+                style={{color: randomStartColor()}}
+                onClick={setNextTextColor}
+                className="text-2xl" icon={faBars} />
+            </div>
         </header>
         <main
         ref={mainBgRef}
         style={{background: randomStartColor()}}
-        className="h-[90vh] px-12 flex gap-4">
+        className="h-[90vh] px-12 flex gap-4
+         mdsm:flex-col mdsm:items-center mdsm:py-10 sm:px-4">
             <div 
             onClick={checkMainClick}
             id='main-left'
-            className="w-3/5 flex flex-col justify-center">
+            className="w-3/5 flex flex-col justify-center
+            mdsm:w-full mdsm:text-center mdsm:items-center">
                 <p 
                 style={{color: randomStartColor()}}
                 onClick={setNextTextColor}
                 className="text-6xl mb-6
-                font-extrabold max-w-[550px]">Solid, bullet-proof, shiny rocks</p>
+                font-extrabold max-w-[550px] sm:text-5xl">Solid, bullet-proof, shiny rocks</p>
                 <p 
                 style={{color: randomStartColor()}}
                 onClick={setNextTextColor}
@@ -186,11 +205,13 @@ function FixedLayout() {
                 the right place!
                 </p>
                 <div className="flex pl-12 
-                font-bold items-center gap-14 ">
+                font-bold items-center gap-14 mdsm:gap-28 mdsm:p-0
+                sm:gap-5">
                     <div 
                     style={{background: randomStartColor()}}
                     onClick={setNextBgColor}
-                    className="py-3 px-8 rounded-2xl bg-white">
+                    className="py-3 px-8 text-lg rounded-2xl bg-white
+                    mdsm:py-4 mdsm:px-10 sm:px-7">
                         <p
                         style={{color: randomStartColor()}}
                         onClick={setNextTextColor}
@@ -199,8 +220,8 @@ function FixedLayout() {
                     <div 
                     style={{borderColor: randomStartColor()}}
                     onClick={setNextBorderColor}
-                    className="py-2 px-7 rounded-2xl
-                    border-2 border-black">
+                    className="py-2 px-7 rounded-2xl text-lg
+                    border-2 border-black mdsm:py-3 mdsm:px-8 sm:py-2">
                         <p
                         style={{color: randomStartColor()}}
                         onClick={setNextTextColor}
@@ -211,12 +232,14 @@ function FixedLayout() {
             <div 
             onClick={checkMainClick}
             id='main-right'
-            className="w-2/5 py-10 flex flex-col gap-6 items-center">
+            className="w-2/5 h-full py-10 flex flex-col gap-6 items-center
+            mdsm:w-full mdsm:grid mdsm:grid-cols-4 mdsm:grid-rows-2 mdsm:gap-4 mdsm:pb-0
+            mdsm:pt-4 sm:hidden">
                 <div 
                 style={{background: randomStartColor()}}
                 onClick={setNextBgColor}
                 className="h-1/6 w-full flex justify-center items-center
-                bg-white">
+                bg-white mdsm:h-full mdsm:col-span-3">
                     <p 
                     style={{color: randomStartColor()}}
                     onClick={setNextTextColor}
@@ -226,7 +249,7 @@ function FixedLayout() {
                 style={{background: randomStartColor()}}
                 onClick={setNextBgColor}
                 className="h-1/6 w-[80%] rounded-md flex justify-center items-center
-                bg-white">
+                bg-white mdsm:h-full mdsm:col-start-2 mdsm:col-span-2 mdsm:w-full">
                     <p 
                     style={{color: randomStartColor()}}
                     onClick={setNextTextColor}
@@ -236,7 +259,7 @@ function FixedLayout() {
                 style={{background: randomStartColor()}}
                 onClick={setNextBgColor}
                 className="h-1/6 w-[60%] rounded-2xl flex justify-center items-center
-                bg-white">
+                bg-white mdsm:h-full mdsm:w-full mdsm:col-start-4 mdsm:row-start-1">
                     <p 
                     style={{color: randomStartColor()}}
                     onClick={setNextTextColor}
@@ -246,7 +269,7 @@ function FixedLayout() {
                 style={{background: randomStartColor()}}
                 onClick={setNextBgColor}
                 className="h-1/6 w-[40%] rounded-full flex justify-center items-center
-                bg-white">
+                bg-white mdsm:w-full mdsm:h-full mdsm:row-start-2 mdsm:col-start-1">
                     <p
                     style={{color: randomStartColor()}}
                     onClick={setNextTextColor}
@@ -256,7 +279,7 @@ function FixedLayout() {
                 style={{background: randomStartColor()}}
                 onClick={setNextBgColor}
                 className="w-[20%] aspect-square rounded-full flex justify-center items-center
-                bg-white">
+                bg-white mx-auto mdsm:w-1/2">
                     <p 
                     style={{color: randomStartColor()}}
                     onClick={setNextTextColor}

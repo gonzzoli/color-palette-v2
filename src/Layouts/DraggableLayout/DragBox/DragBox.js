@@ -1,6 +1,6 @@
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Draggable from "react-draggable"
 import { useSelector } from "react-redux"
 import DragBoxDropdown from "./DragBoxDropdown"
@@ -26,7 +26,9 @@ function DragBox() {
             y: nodeRef.current.offsetHeight
         })
     }
-
+    useEffect(() => {
+        console.log(nodeRef.current.style.zIndex)
+    }, [])
     function changeColor(e) {
         function getNextColor() {
             const index = colors.indexOf(bgColor)
@@ -45,7 +47,6 @@ function DragBox() {
 
     function changeLayer(layer) {
         nodeRef.current.style.zIndex = String(layer)
-        console.log(layer)
         setLastLayer(layer)
     }
 
@@ -77,7 +78,7 @@ function DragBox() {
             <div ref={nodeRef} 
             onClick={checkSize}
             style={{background: bgColor}}
-            className='w-20 h-20
+            className='w-20 h-20 
             overflow-hidden hover:resize group absolute z-[48]'>
                 <div id='handler'
                 className='w-4 h-4 rounded-full 
